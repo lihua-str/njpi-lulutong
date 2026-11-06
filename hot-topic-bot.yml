@@ -1,0 +1,35 @@
+name: Hot Topic Bot
+
+on:
+  schedule:
+    # 每小时整点（UTC；北京时间也是整点）
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "只打印，不发帖"
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hot-topic-bot
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run hot topic bot
+        env:
+          SUPABASE_URL: https://iaejighxmlpfmvofiibf.supabase.co
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: python hot-topic-bot/hot_topic_bot.py
