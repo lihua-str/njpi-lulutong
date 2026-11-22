@@ -1,0 +1,26 @@
+{
+  "name": "南科院路路通",
+  "short_name": "路路通",
+  "description": "南京科技职业学院校园导航：事务微平台、教务系统、宿舍电费、考试报名、手绘地图、部门电话、课程表与校园树洞",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F0F8FF",
+  "theme_color": "#F0F8FF",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
